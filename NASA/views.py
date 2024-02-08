@@ -3,7 +3,7 @@ from nasaapi import Client
 from .models import store 
 
 def landing(req):
-	client = Client("2BO6jqfHWtcS9JFbxYu4s4uTDPmGP81zreDakscg")
+	client = Client("Your_api_key")
 	data = client.apod()
 	obj = store()
 	obj.title = data['title']
