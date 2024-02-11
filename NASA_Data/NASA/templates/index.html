@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Today</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .image {
+            margin: 10px;
+            max-width: 30%;
+            cursor: pointer;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+        }
+        .full-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        .full-screen img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="full-screen" id="fullScreen">
+        <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+        <img id="fullScreenImage">
+    </div>
+    <div class="container">
+    	{% if data%}
+    	{% for d in data %}
+        <div class="image" onclick="openFullscreen('{{d.url}}')">
+            <img src="{{d.url}}" alt="Today's Image">
+            <div>{{d.title}}</div>
+<<<<<<< HEAD
+=======
+            <kbd>{{d.date}}</kbd>
+>>>>>>> 888e0b0 (date added)
+            <p>{{d.description}}</p>
+            </div>
+        {% endfor %}
+        {% endif %}
+        
+    </div>
+
+    <script>
+        function openFullscreen(imageSrc) {
+            document.getElementById('fullScreenImage').src = imageSrc;
+            document.getElementById('fullScreen').style.display = 'flex';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullScreen').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
